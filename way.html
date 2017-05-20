@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>cham11ng | vue & bulma with way</title>
+	<link rel="stylesheet" type="text/css" href="css/bulma.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+<section class="section column is-offset-one-quarter is-half">
+	<div class="container">
+		<div class="contain">
+			<div id="opinion">
+				<counter subject="Like :)"></counter>&nbsp;&nbsp;
+				<counter subject="Dislike :("></counter>&nbsp;&nbsp;
+			</div><!-- opinion -->
+
+			<template id="count-button">
+				<button @click="count += 1" class="button">{{ subject }} {{ count }}</button>
+			</template><br />
+
+			<div id="text-area">
+				<form action="index.html" @submit.prevent="handleIt">
+					<p class="control">
+						<textarea v-model="message" class="textarea"></textarea>
+						<span class="help is-primary">{{ message }}</span>
+						<span v-show="!message" class="help is-danger">
+							You must enter a message
+						</span>
+					</p>
+					<button class="button" @click="updateCount" v-show="message">Submit {{ count }} times</button>
+
+					<pre style="padding:20px; margin:10px 0 0;">{{ $data | json }}</pre>
+				</form>
+			</div><!-- text-area -->
+			
+			<div id="fullname">
+				<p class="control">
+					<div class="columns">
+						<div class="column is-3">
+							<input v-model="first" class="input" />
+						</div>
+						<div class="column is-3">
+							<input v-model="last" class="input" />
+						</div>
+						<div class="column is-6">
+							<input value="{{ fullname }}" class="input">
+						</div>
+					</div><!-- columns -->
+				</p><!-- control -->
+			</div><!-- fullname -->
+
+			<div id="subscription">
+				<pre style="padding:20px; margin:10px 0 0;">{{ $data | json }}</pre>
+				<h1 class="title has-text-centered">Planning</h1>
+				<div v-for="plan in plans">
+					<plan :plan="plan" :active.sync="active" inline-template>
+						<div class="columns is-gapless">
+							<div class="column is-2"><!-- {{ $data | json }} --></div>
+							<div class="column is-3">{{ plan.title }}</div>
+							<div class="column is-3">{{ plan.price }}/month</div>
+							<div class="column is-2">
+								<button class="button {{ isUpgrade ? 'is-info' : 'is-danger'}}" @click="setActivePlan" v-show="plan.title !== active.title">
+									{{ isUpgrade ? 'Upgrade' : 'Downgrade'}}
+								</button>
+								<span v-else>
+									<button class="button">Current</button>
+								</span>
+							</div><!-- column is-2 -->
+						</div><!-- columns is-gapless -->
+					</plan><!-- plan -->
+				</div><!-- vue -->
+			</div><!-- subscription --><br />
+
+			<ol id="tasks">
+				<li :class="{ 'completed': task.completed }" v-for="task in tasks" @click="toggleCompleteFor(task)">{{ task.body }}</li>
+				<!-- <li :class="{ 'completed': task.completed }" v-for="task in tasks" @click="task.completed = ! task.completed">{{ task.body }}</li> -->
+			</ol>
+
+			<div id="to-do-list-app">
+				<c11-todo :tasks="tasks"></c11-todo>
+				<hr />
+				<c11-todo :tasks="[{ body: 'manish chor', completed: true}]	"></c11-todo>
+			</div>
+
+			<template id="to-do-list-template">
+				<h3 class="subtitle">
+					{{ 'Remaining' | uppercase }}
+					<span v-show="remaining">({{ remaining }})</span> : Progress 
+					<span v-show="progress">({{ progress }})</span>
+				</h3>
+				<ol v-show="tasks.length">
+					<li :class="{ 'completed': task.completed, 'pointer': true }" v-for="task in tasks" @click="task.completed = ! task.completed">
+						{{ task.body }}
+						<span @click="deleteTask(task)">x</span>
+					</li>
+				</ol>
+				<h3 v-else class="subtitle pt1">No task yet!</h3>
+				<button @click="clearCompleted" class="button">Clear Completed</button>
+				<br/><br />
+			</template>
+
+		</div><!-- content -->
+	</div><!-- container -->
+</section><!-- section -->
+
+<footer class="footer">
+	<div class="container">
+		<div class="content has-text-centered">
+			<p>
+				<strong>Javascript</strong> by <a href="http://jgthms.com">cham11ng</a>. The source code is licensed
+				<a href="http://opensource.org/licenses/mit-license.php">Myself</a>.
+			</p>
+		</div>
+	</div>
+</footer>
+
+<script type="text/javascript" src="js/vue1.js"></script>
+<script type="text/javascript" src="js/way-vue.js"></script>
+</body>
+</html>

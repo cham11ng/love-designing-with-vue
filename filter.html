@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>cham11ng | vue & bulma with way</title>
+	<link rel="stylesheet" type="text/css" href="css/bulma.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+<section class="section column is-offset-one-quarter is-half">
+	<div class="container">
+		<div class="contain">
+			<div id="filter-app">
+				<pre>{{ $data | json }}</pre>
+
+				<ol>
+					<li v-for="person in people | orderBy 'name' | role 'admin' | limitBy 3">{{ person.name }}</li>
+				</ol>
+			</div>
+
+			<div id="app" class="pt5">
+				<component is="about-page"></component>
+				
+				<h1>Welcome Back, {{ shared.username }}</h1>
+				<notification>This is notification!</notification>
+			</div>
+		</div><!-- content -->
+	</div><!-- container -->
+</section><!-- section -->
+
+<footer class="footer">
+	<div class="container">
+		<div class="content has-text-centered">
+			<p>
+				<strong>Javascript</strong> by <a href="http://jgthms.com">cham11ng</a>. The source code is licensed
+				<a href="http://opensource.org/licenses/mit-license.php">Myself</a>.
+			</p>
+		</div>
+	</div>
+</footer>
+
+<script type="text/javascript" src="js/vue1.js"></script>
+<!-- <script type="text/javascript" src="js/vue.min.js"></script> -->
+<script type="text/javascript" src="js/filter.js"></script>
+<script type="text/javascript" src="js/swapping.js"></script>
+</body>
+</html>

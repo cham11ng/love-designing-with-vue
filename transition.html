@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>cham11ng | vue & bulma with way</title>
+	<link rel="stylesheet" type="text/css" href="css/bulma.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/animate.css">
+</head>
+<body>
+<section class="section column is-offset-one-quarter is-half">
+	<div class="container">
+		<div class="contain">
+			<div id="app">
+				<button @click="show = ! show" class="button">{{ option }}</button>
+
+				<message @new-message="handleNewMessage"></message>
+
+				<ol>
+					<li v-for="message in messages">{{ message }}</li>
+				</ol>
+
+				<div v-show="show" class="animated" transition="fading">Hello Anonymous, This is transition effect. Click Bye to Exit</div>
+
+				<div v-show="show" class="animated" transition="fliping">Hello Anonymous, This is transition effect. Click Bye to Exit</div>
+
+				<div v-show="show" transition="fade">Hello Anonymous, This is transition effect. Click Bye to Exit</div>
+			</div>
+		</div><!-- content -->
+	</div><!-- container -->
+</section><!-- section -->
+
+<footer class="footer">
+	<div class="container">
+		<div class="content has-text-centered">
+			<p>
+				<strong>Javascript</strong> by <a href="http://jgthms.com">cham11ng</a>. The source code is licensed
+				<a href="http://opensource.org/licenses/mit-license.php">Myself</a>.
+			</p>
+		</div>
+	</div>
+</footer>
+
+<script type="text/javascript" src="js/vue1.js"></script>
+<script type="text/javascript" src="js/event+transition.js"></script>
+</body>
+</html>
